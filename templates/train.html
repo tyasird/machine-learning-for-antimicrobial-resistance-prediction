@@ -1,0 +1,124 @@
+{% include  "header.html" %}
+
+
+<div class="container hero ">
+    <div class="row align-items-center text-center text-md-left">
+
+        <div class="col-lg-6">
+
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+
+                    <div class="alert alert-primary" role="alert">
+                        {% for message in messages %}
+                            <span> {{ message }}</span>
+
+                        {% endfor %}
+                    </div>
+
+                {% endif %}
+            {% endwith %}
+
+            <div class="row pl-3"><h5 class="text-danger"> Upload dataset and train a model
+            </h5></div>
+
+
+            <form class="pt-3 needs-validation" action="/trainmodel" method=post enctype="multipart/form-data"
+                  id="analyze_form">
+
+                <div class="form-group">
+                    <label for="">  Predictors File (Resistome) <small>(File accepted:
+                        .xlsx)</small>
+                    </label>
+                    <input type="file" name="predictors" class="form-control-file">
+                    <div class="invalid-feedback">This field is required.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">  Dependents File (Metadata) <small>(File accepted:
+                        .xlsx)</small>
+                    </label>
+                    <input type="file" name="dependents" class="form-control-file">
+                    <div class="invalid-feedback">This field is required.</div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Select Dependents (Metadata) [<small><a href="#"
+                                                                                                   id="select_all">select
+                        all</a> - <a href="#" id="deselect_all">deselect all</a></small>] </label>
+                    <select multiple class="form-control" id="labels" name="dependent_labels" size="8" required>
+                        <option value='r_NoAB'>r_NoAB</option>
+                        <option value='y_NoAB'>y_NoAB</option>
+                        <option value='r_CAM-0.5'>r_CAM-0.5</option>
+                        <option value='y_CAM-0.5'>y_CAM-0.5</option>
+                        <option value='r_CAM-1'>r_CAM-1</option>
+                        <option value='y_CAM-1'>y_CAM-1</option>
+                        <option value='r_CAM-2'>r_CAM-2</option>
+                        <option value='y_CAM-2'>y_CAM-2</option>
+                        <option value='r_CIP-0.002'>r_CIP-0.002</option>
+                        <option value='y_CIP-0.002'>y_CIP-0.002</option>
+                        <option value='r_CIP-0.004'>r_CIP-0.004</option>
+                        <option value='y_CIP-0.004'>y_CIP-0.004</option>
+                        <option value='r_CIP-0.008'>r_CIP-0.008</option>
+                        <option value='y_CIP-0.008'>y_CIP-0.008</option>
+                        <option value='r_CTX-0.5'>r_CTX-0.5</option>
+                        <option value='y_CTX-0.5'>y_CTX-0.5</option>
+                        <option value='r_CTX-1'>r_CTX-1</option>
+                        <option value='y_CTX-1'>y_CTX-1</option>
+                        <option value='r_CTX-2'>r_CTX-2</option>
+                        <option value='y_CTX-2'>y_CTX-2</option>
+                        <option value='r_KAN-4'>r_KAN-4</option>
+                        <option value='y_KAN-4'>y_KAN-4</option>
+                        <option value='r_KAN-8'>r_KAN-8</option>
+                        <option value='y_KAN-8'>y_KAN-8</option>
+                        <option value='r_KAN-16'>r_KAN-16</option>
+                        <option value='y_KAN-16'>y_KAN-16</option>
+                        <option value='r_TET-0.3'>r_TET-0.3</option>
+                        <option value='y_TET-0.3'>y_TET-0.3</option>
+                        <option value='r_TET-0.6'>r_TET-0.6</option>
+                        <option value='y_TET-0.6'>y_TET-0.6</option>
+                        <option value='r_TET-1.25'>r_TET-1.25</option>
+                        <option value='y_TET-1.25'>y_TET-1.25</option>
+                        <option value='r_TRIM-0.125'>r_TRIM-0.125</option>
+                        <option value='y_TRIM-0.125'>y_TRIM-0.125</option>
+                        <option value='r_TRIM-0.25'>r_TRIM-0.25</option>
+                        <option value='y_TRIM-0.25'>y_TRIM-0.25</option>
+                        <option value='r_TRIM-0.5'>r_TRIM-0.5</option>
+                        <option value='y_TRIM-0.5'>y_TRIM-0.5</option>
+                    </select>
+
+                    <div class="invalid-feedback">This field is required.</div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-primary" id="do_analyze">Train Model</button>
+            </form>
+
+
+        </div>
+
+
+        <div class="col-lg-6">
+            <img src="static/images/1 (8).png" alt="Image" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+
+<!--
+    <div class="site-section bg-light block-13">
+      <div class="container">
+      asd
+      </div>
+    </div>
+-->
+
+
+</div>
+
+
+{% include  "footer.html" %}

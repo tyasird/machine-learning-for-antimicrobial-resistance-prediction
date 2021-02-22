@@ -1,0 +1,115 @@
+{% include  "header.html" %}
+
+
+    <div class="container pt-1 hero ">
+        <div class="row align-items-center text-center text-md-left">
+
+            <div class="col-lg-12">
+
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+
+                        <div class="alert alert-info" role="alert">
+                            {% for message in messages %}
+                                <span> {{ message }}</span>
+
+                            {% endfor %}
+                        </div>
+
+                    {% endif %}
+                {% endwith %}
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section">
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="col-lg-12">
+
+
+                    <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
+
+                        <div class="container">
+
+                            {% for v in result.dependents %}
+
+
+                                <div class="row border-bottom">
+                                    <div class="col-md-4">
+                                        <div class="text">
+                                            <h3> {{ v.name }}</h3>
+                                            <h6 class="text-warning"> {{ v.converted_name | safe }}</h6>
+                                            <div class="text-white mb-3">
+
+                                                {% if result.predict_type == 1 %}
+                                                <h6 class="text-black-opacity-05"><span
+
+                                                        class="text-danger">MSE:</span> {{ v.mse }}</h6>
+                                                {% endif %}
+                                            </div>
+
+                                            <h6 class="text-primary"><a
+                                                    href="static/uploads/{{ result.hash }}/{{ v.name }}_predicts.xlsx">Download
+                                                Excel</a></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a data-fancybox="gallery"
+                                           href="static/uploads/{{ result.hash }}/{{ v.name }}_feature.png"><img
+                                                src="static/uploads/{{ result.hash }}/{{ v.name }}_feature.png"
+                                                class="img-fluid" style="height:250px"></a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a data-fancybox="gallery"
+                                           href="static/uploads/{{ result.hash }}/{{ v.name }}_histogram.png"><img
+                                                src="static/uploads/{{ result.hash }}/{{ v.name }}_histogram.png"
+                                                class="img-fluid" style="height:250px"></a>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+
+
+                                    {{ v.predicts|safe }}
+
+
+                                </div>
+
+
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+        <div class="site-section bg-light block-13">
+          <div class="container">
+          asd
+          </div>
+        </div>
+    -->
+
+
+</div>
+
+
+{% include  "footer.html" %}
+

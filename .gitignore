@@ -1,0 +1,7 @@
+static/uploads
+venv
+venv/*
+.idea
+__pycache__
+/__pycache__
+/.idea
